@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,15 +33,29 @@ fun ColumnSample() {
     ) {
         Box(
             Modifier
-                .size(100.dp)
+                .fillMaxWidth()
+                .height(50.dp)
                 .background(Color.LightGray)
-                .align(Alignment.CenterHorizontally)
         )
         Box(
             Modifier
-                .size(100.dp)
+                .fillMaxWidth()
+                .height(50.dp)
                 .background(Color.Gray)
-                .align(Alignment.End)
+                .weight(
+                    weight = 1f,
+                    fill = true
+                )
+        )
+        Box(
+            Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+                .background(Color.DarkGray)
+                .weight(
+                    weight = 1f,
+                    fill = true
+                )
         )
     }
 }
