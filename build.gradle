@@ -8,7 +8,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-rc01'
+        classpath 'com.android.tools.build:gradle:7.0.0'
         // composeを使用するには1.5.10が必要なため
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10"
 
