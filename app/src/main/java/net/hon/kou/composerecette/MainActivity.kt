@@ -6,11 +6,13 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,11 +35,9 @@ fun ColumnSample() {
     Column(
         modifier = Modifier
             .size(300.dp)
-            .background(Color.White)
-            .scrollable(
-                state = rememberScrollState(),
-                orientation = Orientation.Vertical
-            )
+            .background(Color.White),
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.End
     ) {
         Box(
             Modifier
