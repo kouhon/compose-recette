@@ -4,13 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,18 +32,18 @@ fun ColumnSample() {
         modifier = Modifier
             .size(300.dp)
             .background(Color.White),
-        verticalArrangement = Arrangement.Bottom,
-        horizontalAlignment = Alignment.End
     ) {
         Box(
             Modifier
                 .size(100.dp)
                 .background(Color.LightGray)
+                .align(Alignment.CenterHorizontally)
         )
         Box(
             Modifier
                 .size(100.dp)
                 .background(Color.Gray)
+                .align(Alignment.End)
         )
     }
 }
