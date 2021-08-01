@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -18,9 +17,29 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ColumnSample()
+                RowSample()
             }
         }
+    }
+}
+
+@Composable
+fun RowSample() {
+    Row(
+        modifier = Modifier
+            .size(300.dp)
+            .background(Color.White)
+    ) {
+        Box(
+            Modifier
+                .size(100.dp)
+                .background(Color.LightGray)
+        )
+        Box(
+            Modifier
+                .size(100.dp)
+                .background(Color.Gray)
+        )
     }
 }
 
@@ -63,6 +82,6 @@ fun ColumnSample() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ColumnSample()
+        RowSample()
     }
 }
