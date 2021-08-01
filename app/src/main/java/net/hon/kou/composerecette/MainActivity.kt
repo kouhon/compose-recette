@@ -18,8 +18,67 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                RowSample()
+                RowHorizontalSpace()
             }
+        }
+    }
+}
+
+@Composable
+fun RowHorizontalSpace() {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(1.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .width(300.dp)
+                .background(Color.White),
+            horizontalArrangement = Arrangement.SpaceAround
+        ) {
+            Box(
+                Modifier
+                    .size(100.dp)
+                    .background(Color.LightGray)
+            )
+            Box(
+                Modifier
+                    .size(100.dp)
+                    .background(Color.Gray)
+            )
+        }
+        Row(
+            modifier = Modifier
+                .width(300.dp)
+                .background(Color.White),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Box(
+                Modifier
+                    .size(100.dp)
+                    .background(Color.LightGray)
+            )
+            Box(
+                Modifier
+                    .size(100.dp)
+                    .background(Color.Gray)
+            )
+        }
+        Row(
+            modifier = Modifier
+                .width(300.dp)
+                .background(Color.White),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            Box(
+                Modifier
+                    .size(100.dp)
+                    .background(Color.LightGray)
+            )
+            Box(
+                Modifier
+                    .size(100.dp)
+                    .background(Color.Gray)
+            )
         }
     }
 }
@@ -85,6 +144,6 @@ fun ColumnSample() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        RowSample()
+        RowHorizontalSpace()
     }
 }
