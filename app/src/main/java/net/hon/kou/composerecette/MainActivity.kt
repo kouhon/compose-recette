@@ -40,7 +40,6 @@ fun ColumnSample() {
         Box(
             Modifier
                 .fillMaxWidth()
-                .height(50.dp)
                 .background(Color.Gray)
                 .weight(
                     weight = 1f,
