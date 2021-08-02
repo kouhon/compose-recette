@@ -18,9 +18,43 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                RowAlign()
+                RowWeight()
             }
         }
+    }
+}
+
+@Composable
+fun RowWeight() {
+    Row(
+        modifier = Modifier
+            .size(300.dp)
+            .background(Color.White)
+    ) {
+        Box(
+            Modifier
+                .fillMaxHeight()
+                .width(50.dp)
+                .background(Color.LightGray)
+        )
+        Box(
+            Modifier
+                .fillMaxHeight()
+                .weight(
+                    weight = 1f,
+                    fill = true
+                )
+                .background(Color.Gray)
+        )
+        Box(
+            Modifier
+                .fillMaxHeight()
+                .weight(
+                    weight = 1f,
+                    fill = true
+                )
+                .background(Color.DarkGray)
+        )
     }
 }
 
@@ -172,6 +206,6 @@ fun ColumnSample() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        RowAlign()
+        RowWeight()
     }
 }
