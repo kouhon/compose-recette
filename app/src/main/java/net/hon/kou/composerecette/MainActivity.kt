@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                BoxMatchParent()
+                BoxPropagate()
             }
         }
     }
@@ -28,7 +28,29 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        BoxMatchParent()
+        BoxPropagate()
+    }
+}
+
+@Composable
+fun BoxPropagate() {
+    Box(
+        modifier = Modifier
+            .size(300.dp)
+            .background(Color.White)
+    ) {
+        Box(
+            modifier = Modifier
+                .defaultMinSize(200.dp, 200.dp)
+                .background(Color.LightGray)
+                .padding(10.dp),
+            propagateMinConstraints = true
+        ) {
+            Box(
+                modifier = Modifier
+                    .background(Color.Gray)
+            )
+        }
     }
 }
 
