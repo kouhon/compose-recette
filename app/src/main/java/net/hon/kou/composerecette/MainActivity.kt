@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                BoxFillMaxSize()
+                BoxMatchParent()
             }
         }
     }
@@ -28,7 +28,29 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        BoxFillMaxSize()
+        BoxMatchParent()
+    }
+}
+
+@Composable
+fun BoxMatchParent() {
+    Box(
+        modifier = Modifier
+            .size(300.dp)
+            .background(Color.White)
+    ) {
+        Box(
+            modifier = Modifier
+                .defaultMinSize(200.dp, 200.dp)
+                .background(Color.LightGray)
+                .padding(10.dp)
+        ) {
+            Box(
+                modifier = Modifier
+                    .matchParentSize()
+                    .background(Color.Gray)
+            )
+        }
     }
 }
 
