@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                BoxSample()
+                BoxAlignEndBottom()
             }
         }
     }
@@ -28,7 +28,28 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        BoxSample()
+        BoxAlignEndBottom()
+    }
+}
+
+@Composable
+fun BoxAlignEndBottom() {
+    Box(
+        modifier = Modifier
+            .size(300.dp)
+            .background(Color.White),
+        contentAlignment = Alignment.BottomEnd
+    ) {
+        Box(
+            modifier = Modifier
+                .size(200.dp)
+                .background(Color.LightGray)
+        )
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .background(Color.Gray)
+        )
     }
 }
 
