@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,7 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                BoxPropagate()
+                ButtonPreview()
             }
         }
     }
@@ -28,7 +30,16 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        BoxPropagate()
+        ButtonPreview()
+    }
+}
+
+@Composable
+fun ButtonPreview() {
+    Button(
+        onClick = { /* Do something */ }
+    ) {
+        Text(text = "Button")
     }
 }
 
