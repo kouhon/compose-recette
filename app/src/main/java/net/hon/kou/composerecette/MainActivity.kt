@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ShoppingButton()
+                TextSample()
             }
         }
     }
@@ -35,8 +35,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ShoppingButton()
+        TextSample()
     }
+}
+
+@Composable
+fun TextSample() {
+    Text(text = "This is a sample text")
 }
 
 @Composable
