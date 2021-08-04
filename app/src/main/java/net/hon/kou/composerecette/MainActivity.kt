@@ -40,6 +40,7 @@ fun ButtonPreview() {
         onClick = { /* Do something */ }
     ) {
         Text(text = "Button")
+        Text(text = "Button")
     }
 }
 
