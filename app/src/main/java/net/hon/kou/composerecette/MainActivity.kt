@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -37,9 +38,13 @@ fun DefaultPreview() {
 @Composable
 fun ButtonPreview() {
     Button(
-        onClick = { /* Do something */ }
+        onClick = { /* Do something */ },
+        colors = ButtonDefaults.textButtonColors(
+            backgroundColor = Color.DarkGray,
+            contentColor = Color.White,
+            disabledContentColor = Color.LightGray
+        )
     ) {
-        Text(text = "Button")
         Text(text = "Button")
     }
 }
