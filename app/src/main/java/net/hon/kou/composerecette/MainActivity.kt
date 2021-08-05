@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                TextSample()
+                SimpleText(name = "Sample")
             }
         }
     }
@@ -35,8 +35,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        TextSample()
+        SimpleText(name = "Preview")
     }
+}
+
+@Composable
+fun SimpleText(name: String) {
+    Text(text = "Hello $name!")
 }
 
 @Composable
