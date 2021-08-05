@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.hon.kou.composerecette.ui.theme.ComposeRecetteTheme
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                SimpleText(name = "Sample")
+                StringResourceText()
             }
         }
     }
@@ -35,8 +36,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        SimpleText(name = "Preview")
+        StringResourceText()
     }
+}
+
+@Composable
+fun StringResourceText() {
+    Text(stringResource(id = R.string.app_name))
 }
 
 @Composable
