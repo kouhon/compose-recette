@@ -17,8 +17,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import net.hon.kou.composerecette.ui.theme.ComposeRecetteTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +31,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                StringResourceText()
+                BoxExample()
             }
         }
     }
@@ -36,7 +41,30 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        StringResourceText()
+        BoxExample()
+    }
+}
+
+@Composable
+fun BoxExample() {
+    Box(Modifier.width(200.dp)) {
+        Text("This text is Alignment.Center",
+            modifier = Modifier.align(Alignment.Center))
+    }
+}
+
+@Composable
+fun StyleText() {
+    Column {
+        Text(text = "This is a sample text", color = Color.Red)
+        Text("FontSize is 24sp", fontSize = 24.sp)
+        Text("Italic", fontStyle = FontStyle.Italic)
+        Text("Bold", fontWeight = FontWeight.Bold)
+        Text("Sanserif", fontFamily = FontFamily.SansSerif)
+        Text(
+            "TextAlign.Center", textAlign = TextAlign.Center,
+            modifier = Modifier.width(150.dp)
+        )
     }
 }
 
