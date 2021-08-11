@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                SwitchSample()
+                NonCheckedSwitch()
             }
         }
     }
@@ -40,8 +40,15 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        SwitchSample()
+        NonCheckedSwitch()
     }
+}
+
+@Composable
+fun NonCheckedSwitch() {
+    Switch(
+        checked = false, onCheckedChange = null
+    )
 }
 
 @Composable
