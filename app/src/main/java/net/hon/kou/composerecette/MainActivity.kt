@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                DisabledSwitch()
+                ColoredSwitch()
             }
         }
     }
@@ -40,8 +40,18 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        DisabledSwitch()
+        ColoredSwitch()
     }
+}
+
+@Composable
+fun ColoredSwitch() {
+    Switch(
+        checked = true, onCheckedChange = null,
+        colors = SwitchDefaults.colors(
+            checkedThumbColor = Color.Red
+        )
+    )
 }
 
 @Composable
