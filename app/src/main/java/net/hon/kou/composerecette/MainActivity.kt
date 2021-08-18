@@ -1,6 +1,7 @@
 package net.hon.kou.composerecette
 
 import android.os.Bundle
+import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ColoredSwitch()
+                SwitchWithText()
             }
         }
     }
@@ -40,7 +41,30 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ColoredSwitch()
+        SwitchWithText()
+    }
+}
+
+@Composable
+fun SwitchWithText() {
+    Row(
+        Modifier
+            .width(320.dp)
+            .padding(horizontal = 16.dp)) {
+        Text(
+            text = "Jetpack Compose Switch",
+            modifier = Modifier
+                .align(Alignment.CenterVertically)
+                .padding(16.dp),
+            style = MaterialTheme.typography.subtitle1
+        )
+        Spacer(Modifier.weight(1f))
+        val checkedState = remember { mutableStateOf(true) }
+        Switch(
+            checked = checkedState.value,
+            onCheckedChange = { checkedState.value = it },
+            modifier = Modifier.align(Alignment.CenterVertically)
+        )
     }
 }
 
