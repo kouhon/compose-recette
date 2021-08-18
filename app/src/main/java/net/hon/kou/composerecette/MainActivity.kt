@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                SimpleAlertDialog()
+                ConformAlertDialog()
             }
         }
     }
@@ -41,7 +41,41 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        SimpleAlertDialog()
+        ConformAlertDialog()
+    }
+}
+
+@Composable
+fun ConformAlertDialog() {
+    val openDialog = remember { mutableStateOf(true) }
+    if (openDialog.value) {
+        AlertDialog(
+            onDismissRequest = { },
+            title = {
+                Text(text = "位置情報を使いますか？")
+            },
+            text = {
+                Text("GPSから位置情報を取得するとタイムラインを自動記録できます。")
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        openDialog.value = false
+                    }
+                ) {
+                    Text("使う")
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        openDialog.value = false
+                    }
+                ) {
+                    Text("キャンセル")
+                }
+            }
+        )
     }
 }
 
