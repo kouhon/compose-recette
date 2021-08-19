@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -16,6 +17,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -31,7 +34,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                CardSample()
+                SimpleCardPreview()
             }
         }
     }
@@ -41,7 +44,42 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        CardSample()
+        SimpleCardPreview()
+    }
+}
+
+@Composable
+fun SimpleCardPreview() {
+    Card(modifier = Modifier
+        .padding(16.dp)
+        .wrapContentSize()
+    ) {
+        CardContent()
+    }
+}
+
+@Composable
+fun CardContent() {
+    Column {
+        Image(
+            painter = painterResource(R.drawable.ic_launcher_background),
+            contentDescription = "カード画像",
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(ratio = 1.7731f),
+            alignment = Alignment.Center,
+            contentScale = ContentScale.Crop
+        )
+        Column(Modifier.padding(16.dp)) {
+            Text(
+                "Title goes here",
+                style = MaterialTheme.typography.subtitle1
+            )
+            Text(
+                "Secondary line text techbooster techbooster",
+                style = MaterialTheme.typography.body2
+            )
+        }
     }
 }
 
