@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ConformAlertDialog()
+                SimpleAlertDialog()
             }
         }
     }
@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ConformAlertDialog()
+        SimpleAlertDialog()
     }
 }
 
@@ -84,7 +84,9 @@ fun SimpleAlertDialog() {
     val openDialog = remember { mutableStateOf(true) }
     if (openDialog.value) {
         AlertDialog(
-            onDismissRequest = {},
+            onDismissRequest = {
+                openDialog.value = false
+            },
             title = {
                 Text(text = "Network disconnected")
             },
