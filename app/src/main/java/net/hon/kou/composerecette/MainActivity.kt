@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                SimpleAlertDialog()
+                CardSample()
             }
         }
     }
@@ -41,7 +41,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        SimpleAlertDialog()
+        CardSample()
+    }
+}
+
+@Composable
+fun CardSample() {
+    Card {
+        Text("Card contents is here")
     }
 }
 
