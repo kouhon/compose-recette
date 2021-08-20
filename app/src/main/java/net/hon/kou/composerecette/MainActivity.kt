@@ -9,6 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
@@ -34,7 +35,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                SimpleCardPreview()
+                SimpleFab()
             }
         }
     }
@@ -44,7 +45,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        SimpleCardPreview()
+        SimpleFab()
+    }
+}
+
+@Composable
+fun SimpleFab() {
+    FloatingActionButton(onClick = { }) {
+        Icon(Icons.Filled.Add, contentDescription = "追加")
     }
 }
 
