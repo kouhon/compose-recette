@@ -9,9 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -51,8 +49,19 @@ fun DefaultPreview() {
 
 @Composable
 fun SimpleFab() {
-    FloatingActionButton(onClick = { }) {
-        Icon(Icons.Filled.Add, contentDescription = "追加")
+    Row {
+        FloatingActionButton(onClick = { }) {
+            Icon(Icons.Filled.Favorite, contentDescription = "お気に入り")
+        }
+        FloatingActionButton(onClick = { }) {
+            Icon(Icons.Filled.Add, contentDescription = "追加")
+        }
+        FloatingActionButton(onClick = { }) {
+            Icon(Icons.Filled.Edit, contentDescription = "変更")
+        }
+        FloatingActionButton(onClick = { }) {
+            Icon(Icons.Filled.Share, contentDescription = "共有")
+        }
     }
 }
 
