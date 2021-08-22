@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                SimpleFab()
+                IconButtonSample()
             }
         }
     }
@@ -43,7 +43,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        SimpleFab()
+        IconButtonSample()
+    }
+}
+
+@Composable
+fun IconButtonSample() {
+    IconButton(onClick = { /*TODO*/ }) {
+        Icon(Icons.Filled.Favorite, contentDescription = "お気に入り")
     }
 }
 
