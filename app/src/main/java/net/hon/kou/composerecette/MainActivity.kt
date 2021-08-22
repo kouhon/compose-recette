@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                IconButtonSample()
+                IconToggleButtonSample()
             }
         }
     }
@@ -43,7 +44,27 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        IconButtonSample()
+        IconToggleButtonSample()
+    }
+}
+
+@Composable
+fun IconToggleButtonSample() {
+    var checked = remember { mutableStateOf(false) }
+    IconToggleButton(
+        checked = checked.value,
+        onCheckedChange = {
+            checked.value = it
+        }
+    ) {
+        val tint = animateColorAsState(
+            if (checked.value) {
+                Color(0xFFEC407A)
+            } else {
+                Color(0xFFB0BEC5)
+            }
+        )
+        Icon(Icons.Filled.Favorite, contentDescription = "お気に入り", tint = tint.value)
     }
 }
 
