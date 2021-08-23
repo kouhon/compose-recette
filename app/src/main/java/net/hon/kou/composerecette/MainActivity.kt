@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                IconToggleButtonSample()
+                SimpleProgress()
             }
         }
     }
@@ -44,8 +44,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        IconToggleButtonSample()
+        SimpleProgress()
     }
+}
+
+@Composable
+fun SimpleProgress() {
+    CircularProgressIndicator()
 }
 
 @Composable
