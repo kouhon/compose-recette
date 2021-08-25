@@ -1,7 +1,6 @@
 package net.hon.kou.composerecette
 
 import android.os.Bundle
-import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.animateColorAsState
@@ -34,7 +33,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                SimpleProgress()
+                SimpleLinearProgress()
             }
         }
     }
@@ -44,8 +43,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        SimpleProgress()
+        SimpleLinearProgress()
     }
+}
+
+@Composable
+fun SimpleLinearProgress() {
+    LinearProgressIndicator()
 }
 
 @Composable
