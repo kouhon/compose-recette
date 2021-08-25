@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                SimpleLinearProgress()
+                CenterProgressIndicator()
             }
         }
     }
@@ -43,7 +43,21 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        SimpleLinearProgress()
+        CenterProgressIndicator()
+    }
+}
+
+@Composable
+fun CenterProgressIndicator() {
+    Surface(
+        color = MaterialTheme.colors.background
+    ) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            CircularProgressIndicator()
+        }
     }
 }
 
