@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                SimpleBottomNavigation()
+                MultipleItemsBottomNavigation()
             }
         }
     }
@@ -43,7 +44,30 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        SimpleBottomNavigation()
+        MultipleItemsBottomNavigation()
+    }
+}
+
+sealed class Item(var dist: String, var icon: ImageVector) {
+    object Home : Item("Home", Icons.Filled.Home)
+    object Email : Item("Email", Icons.Filled.Email)
+    object Stars : Item("Stars", Icons.Filled.Star)
+    object Lists : Item("Lists", Icons.Filled.List)
+}
+@Composable
+fun MultipleItemsBottomNavigation() {
+    var selectedItem = remember { mutableStateOf(0) }
+    val items = listOf(Item.Home, Item.Email, Item.Stars, Item.Lists)
+    BottomNavigation {
+        items.forEachIndexed { index, item ->
+            BottomNavigationItem(
+                icon = { Icon(item.icon, contentDescription = item.dist) },
+                label = { Text(item.dist) },
+                alwaysShowLabel = false,
+                selected = selectedItem.value == index,
+                onClick = { selectedItem.value = index }
+            )
+        }
     }
 }
 
