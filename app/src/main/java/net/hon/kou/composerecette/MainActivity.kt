@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                TopAppBarSample()
+                SimpleBottomNavigation()
             }
         }
     }
@@ -43,7 +43,23 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        TopAppBarSample()
+        SimpleBottomNavigation()
+    }
+}
+
+@Composable
+fun SimpleBottomNavigation() {
+    var selectedItem = remember { mutableStateOf(0) }
+    val items = listOf("Songs", "Artists", "Playlists")
+    BottomNavigation {
+        items.forEachIndexed { index, item ->
+            BottomNavigationItem(
+                icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
+                label = { Text(item) },
+                selected = selectedItem.value == index,
+                onClick = { selectedItem.value = index }
+            )
+        }
     }
 }
 
