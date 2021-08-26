@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                CenterProgressIndicator()
+                TopAppBarSample()
             }
         }
     }
@@ -43,8 +43,28 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        CenterProgressIndicator()
+        TopAppBarSample()
     }
+}
+
+@Composable
+fun TopAppBarSample() {
+    TopAppBar(
+        title = { Text("My TopAppBar") },
+        navigationIcon = {
+            IconButton(onClick = {}) {
+                Icon(Icons.Filled.Menu, contentDescription = "Open drawer")
+            }
+        },
+        actions = {
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(Icons.Filled.Edit, contentDescription = "Edit text")
+            }
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(Icons.Filled.Share, contentDescription = "Share text")
+            }
+        }
+    )
 }
 
 @Composable
