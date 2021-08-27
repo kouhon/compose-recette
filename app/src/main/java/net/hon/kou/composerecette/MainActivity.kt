@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ModifierBackground()
+                ModifierPadding()
             }
         }
     }
@@ -45,7 +45,23 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ModifierBackground()
+        ModifierPadding()
+    }
+}
+
+@Composable
+fun ModifierPadding() {
+    Box(
+        modifier = Modifier
+            .background(Color.LightGray)
+            .size(300.dp)
+            .padding(10.dp)
+    ) {
+        Box(
+            Modifier
+                .fillMaxSize()
+                .background(Color.White)
+        )
     }
 }
 
