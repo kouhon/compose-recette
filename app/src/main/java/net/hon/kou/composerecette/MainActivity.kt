@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ModifierClickable()
+                ModifierClickableDisabled()
             }
         }
     }
@@ -46,8 +46,19 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ModifierClickable()
+        ModifierClickableDisabled()
     }
+}
+
+@Composable
+fun ModifierClickableDisabled() {
+    Box(
+        modifier = Modifier
+            .size(200.dp)
+            .padding(50.dp)
+            .background(Color.Gray)
+            .clickable(enabled = false, onClick = {})
+    )
 }
 
 @Composable
