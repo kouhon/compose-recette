@@ -7,7 +7,10 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -36,7 +39,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ModifierClickableDisabled()
+                ModifierScrollable()
             }
         }
     }
@@ -46,7 +49,36 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ModifierClickableDisabled()
+        ModifierScrollable()
+    }
+}
+
+@Composable
+fun ModifierScrollable() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(300.dp)
+            .scrollable(
+                orientation = Orientation.Vertical,
+                state = rememberScrollState()
+            )
+    ) {
+        repeat(10) {
+            Box(
+                Modifier
+                    .height(50.dp)
+                    .fillMaxWidth()
+                    .background(Color.White)
+            ) {
+                Text(
+                    text = "Column $it",
+                    modifier = Modifier
+                        .align(Alignment.CenterStart)
+                        .padding(20.dp)
+                )
+            }
+        }
     }
 }
 
@@ -68,7 +100,7 @@ fun ModifierClickable() {
             .size(200.dp)
             .padding(50.dp)
             .background(Color.Gray)
-            .clickable {  }
+            .clickable { }
     )
 }
 
