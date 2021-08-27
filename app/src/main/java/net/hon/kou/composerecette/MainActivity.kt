@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                SpacerSample()
+                SpacerWeight()
             }
         }
     }
@@ -44,7 +44,30 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        SpacerSample()
+        SpacerWeight()
+    }
+}
+
+@Composable
+fun SpacerWeight() {
+    Row(
+        modifier = Modifier
+            .size(300.dp)
+            .background(Color.White)
+    ) {
+        Box(
+            Modifier
+                .height(100.dp)
+                .weight(weight = 1f, fill = true)
+                .background(Color.LightGray)
+        )
+        Spacer(modifier = Modifier.width(50.dp))
+        Box(
+            Modifier
+                .height(100.dp)
+                .weight(weight = 2f, fill = true)
+                .background(Color.Gray)
+        )
     }
 }
 
