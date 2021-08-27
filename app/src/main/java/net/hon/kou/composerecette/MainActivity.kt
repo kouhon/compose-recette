@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                MultipleItemsBottomNavigation()
+                SpacerSample()
             }
         }
     }
@@ -44,7 +44,28 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        MultipleItemsBottomNavigation()
+        SpacerSample()
+    }
+}
+
+@Composable
+fun SpacerSample() {
+    Column(
+        modifier = Modifier
+            .size(300.dp)
+            .background(Color.White)
+    ) {
+        Box(
+            Modifier
+                .size(100.dp)
+                .background(Color.LightGray)
+        )
+        Spacer(modifier = Modifier.size(50.dp))
+        Box(
+            Modifier
+                .size(100.dp)
+                .background(Color.Gray)
+        )
     }
 }
 
