@@ -7,6 +7,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -34,7 +35,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                SpacerWeight()
+                ModifierBackground()
             }
         }
     }
@@ -44,7 +45,41 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        SpacerWeight()
+        ModifierBackground()
+    }
+}
+
+@Composable
+fun ModifierBackground() {
+    Box(
+        modifier = Modifier
+            .background(Color.DarkGray, CircleShape)
+            .size(300.dp)
+    )
+}
+
+@Composable
+fun ModifierFillMaxSize() {
+    Box(
+        modifier = Modifier
+            .background(Color.LightGray)
+            .fillMaxSize()
+    )
+}
+
+@Composable
+fun ModifierSize() {
+    Column {
+        Box(
+            modifier = Modifier
+                .background(Color.LightGray)
+                .size(300.dp)
+        )
+        Box(
+            modifier = Modifier
+                .background(Color.Gray)
+                .size(100.dp, 100.dp)
+        )
     }
 }
 
