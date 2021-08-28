@@ -5,8 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -27,9 +25,9 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
 import net.hon.kou.composerecette.ui.theme.ComposeRecetteTheme
 
 class MainActivity : ComponentActivity() {
@@ -37,34 +35,47 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ModifierOrder()
+                MyLayout()
             }
         }
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun DefaultPreview() {
-//    ComposeRecetteTheme {
-//        UserItem(user = User(firstName = "光秀", familyName = "明智"))
-//    }
-//}
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    ComposeRecetteTheme {
+        MyLayout()
+    }
+}
+
+@Composable
+fun MyLayout(modifier: Modifier = Modifier) {
+    ConstraintLayout(modifier = modifier) {
+        val textRef = createRef()
+        Text(
+            text = "Hello",
+            modifier = Modifier.constrainAs(textRef) {
+                centerTo(parent)
+            }
+        )
+    }
+}
 
 data class User(
     val firstName: String,
     val familyName: String
 )
 
-@Preview("PreviewParameter for UserItem", showBackground = true)
-@Composable
-fun UserItem(@PreviewParameter(provider = FakeUserProvider::class, limit = 2) user: User) {
-    Row {
-        Text(text = user.familyName)
-        Spacer(Modifier.size(8.dp))
-        Text(text = user.firstName)
-    }
-}
+//@Preview("PreviewParameter for UserItem", showBackground = true)
+//@Composable
+//fun UserItem(@PreviewParameter(provider = FakeUserProvider::class, limit = 2) user: User) {
+//    Row {
+//        Text(text = user.familyName)
+//        Spacer(Modifier.size(8.dp))
+//        Text(text = user.firstName)
+//    }
+//}
 
 @Composable
 fun ModifierOrder() {
