@@ -56,7 +56,8 @@ fun MyLayout(modifier: Modifier = Modifier) {
         Text(
             text = "Hello",
             modifier = Modifier.constrainAs(textRef) {
-                centerTo(parent)
+                start.linkTo(parent.start)
+                top.linkTo(parent.top)
             }
         )
     }
