@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ModifierScrollable()
+                ModifierOrder()
             }
         }
     }
@@ -46,8 +46,20 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ModifierScrollable()
+        ModifierOrder()
     }
+}
+
+@Composable
+fun ModifierOrder() {
+    Box(
+        modifier = Modifier
+            .size(100.dp, 100.dp)
+            .background(Color.Gray)
+            .padding(25.dp)
+            .clickable {  }
+            .padding(25.dp)
+    )
 }
 
 @Composable
