@@ -27,6 +27,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import net.hon.kou.composerecette.ui.theme.ComposeRecetteTheme
@@ -42,22 +43,23 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    ComposeRecetteTheme {
-        UserItem(user = User(firstName = "光秀", familyName = "明智"))
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun DefaultPreview() {
+//    ComposeRecetteTheme {
+//        UserItem(user = User(firstName = "光秀", familyName = "明智"))
+//    }
+//}
 
 data class User(
     val firstName: String,
     val familyName: String
 )
 
+@Preview("PreviewParameter for UserItem", showBackground = true)
 @Composable
-fun UserItem(user: User) {
-    Row() {
+fun UserItem(@PreviewParameter(provider = FakeUserProvider::class, limit = 2) user: User) {
+    Row {
         Text(text = user.familyName)
         Spacer(Modifier.size(8.dp))
         Text(text = user.firstName)
