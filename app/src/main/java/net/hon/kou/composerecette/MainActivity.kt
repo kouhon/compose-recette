@@ -46,7 +46,21 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ModifierOrder()
+        UserItem(user = User(firstName = "光秀", familyName = "明智"))
+    }
+}
+
+data class User(
+    val firstName: String,
+    val familyName: String
+)
+
+@Composable
+fun UserItem(user: User) {
+    Row() {
+        Text(text = user.familyName)
+        Spacer(Modifier.size(8.dp))
+        Text(text = user.firstName)
     }
 }
 
@@ -57,7 +71,7 @@ fun ModifierOrder() {
             .size(100.dp, 100.dp)
             .background(Color.Gray)
             .padding(25.dp)
-            .clickable {  }
+            .clickable { }
             .padding(25.dp)
     )
 }
