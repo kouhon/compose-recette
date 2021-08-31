@@ -52,12 +52,20 @@ fun DefaultPreview() {
 @Composable
 fun MyLayout(modifier: Modifier = Modifier) {
     ConstraintLayout(modifier = modifier) {
-        val textRef = createRef()
+        val (iconRef, textRef) = createRefs()
+        Icon(
+            Icons.Default.Face,
+            contentDescription = "",
+            modifier = Modifier.constrainAs(iconRef) {
+                start.linkTo(parent.start)
+                top.linkTo(parent.top)
+            }
+        )
         Text(
             text = "Hello",
             modifier = Modifier.constrainAs(textRef) {
-                start.linkTo(parent.start)
-                top.linkTo(parent.top)
+                start.linkTo(iconRef.end)
+                top.linkTo(iconRef.bottom)
             }
         )
     }
