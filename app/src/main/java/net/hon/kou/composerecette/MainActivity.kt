@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                MyLayout()
+                ConstraintLayoutMargin()
             }
         }
     }
@@ -45,7 +45,21 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        MyLayout()
+        ConstraintLayoutMargin()
+    }
+}
+
+@Composable
+fun ConstraintLayoutMargin() {
+    ConstraintLayout(modifier = Modifier) {
+        val textRef = createRef()
+        Text(
+            text = "Hello",
+            modifier = Modifier.constrainAs(textRef) {
+                start.linkTo(parent.start, 24.dp)
+                top.linkTo(parent.top, 16.dp)
+            }
+        )
     }
 }
 
