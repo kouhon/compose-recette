@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                MultiConstraintLayoutSample1()
+                MultiConstraintLayoutSample2()
             }
         }
     }
@@ -45,7 +45,33 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        MultiConstraintLayoutSample1()
+        MultiConstraintLayoutSample2()
+    }
+}
+
+@Composable
+fun MultiConstraintLayoutSample2() {
+    ConstraintLayout(modifier = Modifier) {
+        val (iconRef, textRef) = createRefs()
+        Icon(
+            Icons.Default.Face,
+            contentDescription = "",
+            modifier = Modifier.constrainAs(iconRef) {
+                start.linkTo(parent.start)
+                top.linkTo(parent.top)
+            }
+        )
+        Text(
+            text = "Hello",
+            modifier = Modifier.constrainAs(textRef) {
+                linkTo(
+                    start = iconRef.end,
+                    end = parent.end,
+                    startMargin = 16.dp,
+                    endMargin = 0.dp
+                )
+            }
+        )
     }
 }
 
@@ -72,7 +98,6 @@ fun MultiConstraintLayoutSample1() {
                 )
             }
         )
-
     }
 }
 
