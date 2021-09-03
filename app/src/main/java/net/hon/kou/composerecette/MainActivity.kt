@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                MultiConstraintLayoutSample3()
+                ConstraintLayoutBias1()
             }
         }
     }
@@ -45,7 +45,24 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        MultiConstraintLayoutSample3()
+        ConstraintLayoutBias1()
+    }
+}
+
+@Composable
+fun ConstraintLayoutBias1() {
+    ConstraintLayout(modifier = Modifier.size(100.dp)) {
+        val textRef = createRef()
+        Text(
+            text = "Hello.",
+            modifier = Modifier.constrainAs(textRef) {
+                linkTo(
+                    top = parent.top,
+                    bottom = parent.bottom,
+                    bias = 0.8f
+                )
+            }
+        )
     }
 }
 
