@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import net.hon.kou.composerecette.ui.theme.ComposeRecetteTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ConstraintLayoutBias3()
+                ConstraintLayoutFillToConstraints()
             }
         }
     }
@@ -45,7 +46,22 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ConstraintLayoutBias3()
+        ConstraintLayoutFillToConstraints()
+    }
+}
+
+@Composable
+fun ConstraintLayoutFillToConstraints() {
+    ConstraintLayout(modifier = Modifier.size(100.dp)) {
+        val textRef = createRef()
+        Text(
+            text = "Hello",
+            modifier = Modifier.constrainAs(textRef) {
+                width = Dimension.fillToConstraints
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+            }
+        )
     }
 }
 
