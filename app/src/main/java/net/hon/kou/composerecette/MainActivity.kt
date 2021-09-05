@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ConstraintLayoutFillToConstraints()
+                ConstraintLayoutPercent()
             }
         }
     }
@@ -46,7 +46,30 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ConstraintLayoutFillToConstraints()
+        ConstraintLayoutPercent()
+    }
+}
+
+@Composable
+fun ConstraintLayoutPercent() {
+    ConstraintLayout(modifier = Modifier.size(100.dp)) {
+        val (iconRef, textRef) = createRefs()
+        Icon(
+            Icons.Default.Face,
+            contentDescription = "",
+            modifier = Modifier.constrainAs(iconRef) {
+                start.linkTo(parent.start)
+                top.linkTo(parent.top)
+            }
+        )
+        Text(
+            text = "Hello",
+            modifier = Modifier.constrainAs(textRef) {
+                width = Dimension.percent(0.5f)
+                start.linkTo(iconRef.end)
+                end.linkTo(parent.end)
+            }
+        )
     }
 }
 
