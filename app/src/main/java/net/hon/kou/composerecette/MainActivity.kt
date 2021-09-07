@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ConstraintLayoutValueAndPreferredValue()
+                ConstraintLayoutGuideline()
             }
         }
     }
@@ -46,7 +46,21 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ConstraintLayoutValueAndPreferredValue()
+        ConstraintLayoutGuideline()
+    }
+}
+
+@Composable
+fun ConstraintLayoutGuideline() {
+    ConstraintLayout(modifier = Modifier.size(100.dp)) {
+        val textRef = createRef()
+        val guideline = createGuidelineFromTop(0.25f)
+        Text(
+            text = "Hello",
+            modifier = Modifier.constrainAs(textRef) {
+                top.linkTo(guideline)
+            }
+        )
     }
 }
 
