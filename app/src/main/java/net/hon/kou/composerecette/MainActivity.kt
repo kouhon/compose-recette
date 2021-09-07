@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ConstraintLayoutPercent()
+                ConstraintLayoutValueAndPreferredValue()
             }
         }
     }
@@ -46,7 +46,73 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ConstraintLayoutPercent()
+        ConstraintLayoutValueAndPreferredValue()
+    }
+}
+
+@Composable
+fun ConstraintLayoutValueAndPreferredValue() {
+    ConstraintLayout(modifier = Modifier.size(130.dp)) {
+        val (textRef1, textRef2, textRef3, textRef4) = createRefs()
+        Text(
+            text = "Hello",
+            modifier = Modifier.constrainAs(textRef1) {
+                width = Dimension.value(80.dp)
+                start.linkTo(parent.start, 80.dp)
+                end.linkTo(parent.end)
+            }
+        )
+        Text(
+            text = "Hello",
+            modifier = Modifier.constrainAs(textRef2) {
+                width = Dimension.preferredValue(80.dp)
+                start.linkTo(parent.start, 80.dp)
+                end.linkTo(parent.end)
+                top.linkTo(textRef1.bottom)
+            }
+        )
+        Text(
+            text = "Hello",
+            modifier = Modifier.constrainAs(textRef3) {
+                width = Dimension.value(80.dp)
+                start.linkTo(parent.start, 80.dp)
+                end.linkTo(parent.end)
+                top.linkTo(textRef2.bottom)
+            }
+        )
+        Text(
+            text = "Hello",
+            modifier = Modifier.constrainAs(textRef4) {
+                width = Dimension.preferredValue(80.dp)
+                start.linkTo(parent.start, 100.dp)
+                end.linkTo(parent.end)
+                top.linkTo(textRef3.bottom)
+            }
+        )
+    }
+}
+
+@Composable
+fun ConstraintLayoutWrapContent() {
+    ConstraintLayout(modifier = Modifier.size(120.dp)) {
+        val (textRef1, textRef2) = createRefs()
+        Text(
+            text = "Hello",
+            modifier = Modifier.constrainAs(textRef1) {
+                width = Dimension.wrapContent
+                start.linkTo(parent.start, 100.dp)
+                end.linkTo(parent.end)
+            }
+        )
+        Text(
+            text = "Hello",
+            modifier = Modifier.constrainAs(textRef2) {
+                width = Dimension.preferredWrapContent
+                start.linkTo(parent.start, 100.dp)
+                end.linkTo(parent.end)
+                top.linkTo(textRef1.bottom)
+            }
+        )
     }
 }
 
