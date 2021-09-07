@@ -51,6 +51,36 @@ fun DefaultPreview() {
 }
 
 @Composable
+fun ConstraintLayoutBarrier() {
+    ConstraintLayout(modifier = Modifier.size(100.dp)) {
+        val (iconRef, textRef, textRef2) = createRefs()
+        val bottomBarrier = createBottomBarrier(iconRef, textRef)
+        Icon(
+            Icons.Default.Add,
+            contentDescription = null,
+            modifier = Modifier.constrainAs(iconRef) {
+                start.linkTo(parent.start)
+                top.linkTo(parent.top)
+            }
+        )
+        Text(
+            text = "Hello",
+            modifier = Modifier.constrainAs(textRef) {
+                start.linkTo(iconRef.end)
+                top.linkTo(parent.top)
+            }
+        )
+        Text(
+            text = "Android",
+            modifier = Modifier.constrainAs(textRef2) {
+                start.linkTo(parent.start)
+                top.linkTo(bottomBarrier)
+            }
+        )
+    }
+}
+
+@Composable
 fun ConstraintLayoutGuideline() {
     ConstraintLayout(modifier = Modifier.size(100.dp)) {
         val textRef = createRef()
