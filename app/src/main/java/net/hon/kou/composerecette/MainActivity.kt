@@ -27,6 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import net.hon.kou.composerecette.ui.theme.ComposeRecetteTheme
@@ -36,7 +37,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ConstraintLayoutBarrier()
+                ConstraintLayoutChain()
             }
         }
     }
@@ -46,7 +47,32 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ConstraintLayoutBarrier()
+        ConstraintLayoutChain()
+    }
+}
+
+@Composable
+fun ConstraintLayoutChain() {
+    ConstraintLayout(modifier = Modifier.size(100.dp)) {
+        val (iconRef, textRef) = createRefs()
+        createHorizontalChain(iconRef, textRef, chainStyle = ChainStyle.Packed)
+        Icon(
+            Icons.Default.Add,
+            contentDescription = null,
+            modifier = Modifier.constrainAs(iconRef) {
+                start.linkTo(parent.start)
+                end.linkTo(textRef.start)
+                top.linkTo(parent.top)
+            }
+        )
+        Text(
+            text = "Hello",
+            modifier = Modifier.constrainAs(textRef) {
+                start.linkTo(iconRef.end)
+                end.linkTo(parent.end)
+                top.linkTo(parent.top)
+            }
+        )
     }
 }
 
