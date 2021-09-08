@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
@@ -29,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
 import net.hon.kou.composerecette.ui.theme.ComposeRecetteTheme
 
@@ -37,7 +39,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ConstraintLayoutChain()
+                ConstraintLayoutConstraintSet()
             }
         }
     }
@@ -47,7 +49,35 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ConstraintLayoutChain()
+        ConstraintLayoutConstraintSet()
+    }
+}
+
+val constraintSet = ConstraintSet {
+    val iconRef = createRefFor("icon")
+    val textRef = createRefFor("text")
+    constrain(iconRef) {
+        start.linkTo(parent.start)
+        top.linkTo(parent.top)
+    }
+    constrain(textRef) {
+        start.linkTo(iconRef.end)
+        top.linkTo(iconRef.bottom)
+    }
+}
+
+@Composable
+fun ConstraintLayoutConstraintSet() {
+    ConstraintLayout(constraintSet) {
+        Icon(
+            Icons.Default.Add,
+            contentDescription = null,
+            modifier = Modifier.layoutId("icon")
+        )
+        Text(
+            text = "Hello",
+            modifier = Modifier.layoutId("text")
+        )
     }
 }
 
