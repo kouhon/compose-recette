@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeRecetteTheme {
-                ConstraintLayoutGuideline()
+                ConstraintLayoutBarrier()
             }
         }
     }
@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     ComposeRecetteTheme {
-        ConstraintLayoutGuideline()
+        ConstraintLayoutBarrier()
     }
 }
 
@@ -64,7 +64,7 @@ fun ConstraintLayoutBarrier() {
             }
         )
         Text(
-            text = "Hello",
+            text = "Hell\nHello",
             modifier = Modifier.constrainAs(textRef) {
                 start.linkTo(iconRef.end)
                 top.linkTo(parent.top)
